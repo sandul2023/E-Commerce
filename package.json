@@ -4,9 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-  "backend": "nodemon BackEnd/index.js",
+    "backend": "nodemon BackEnd/index.js",
     "frontend": "npm run dev --prefix FrontEnd",
-  "dev": "concurrently \"npm run Front-End\" \"npm run BackEnd"},
+    "dev": "concurrently \"npm run FrontEnd\" \"npm run BackEnd"},
   "keywords": [],
   "author": "",
   "license": "ISC",

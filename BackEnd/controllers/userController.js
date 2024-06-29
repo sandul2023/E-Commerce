@@ -1,6 +1,6 @@
 import User from "../models/userModel.js";
-import asyncHandler from "../middlewares/asyncHandler.js";
 import bcrypt from "bcryptjs";
+import asyncHandler from "../middlewares/asyncHandler.js";
 import createToken from "../utils/createToken.js";
 
 const createUser = asyncHandler(async (req, res) => {
@@ -15,7 +15,8 @@ const createUser = asyncHandler(async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const newUser = new User({ username, email, password: hashedPassword });
+
+    const newUser = new User({username , email, password: hashedPassword })
 
     try {
         await newUser.save();
@@ -60,6 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
         }
     }
 });
+
 
 const logoutCurrentUser = asyncHandler(async (req, res) => {
     res.cookie("jwt", "", {
@@ -167,14 +169,5 @@ const updateUserById = asyncHandler(async (req, res) => {
     }
 });
 
-export {
-    createUser,
-    loginUser,
-    logoutCurrentUser,
-    getAllUsers,
-    getCurrentUserProfile,
-    updateCurrentUserProfile,
-    deleteUserById,
-    getUserById,
-    updateUserById,
-};
+export { createUser, loginUser, logoutCurrentUser, getAllUsers, getCurrentUserProfile, updateCurrentUserProfile, deleteUserById,  getUserById,
+    updateUserById, };
